@@ -29,8 +29,8 @@ public class UserServiceImp implements UserService {
    }
 
    @Override
-   public void update(int id,String firstName,String lastName) {
-      userDao.update(id,firstName,lastName);
+   public void update(User user) {
+      userDao.update(user);
    }
    @Override
    public List<User> getAllUser() {

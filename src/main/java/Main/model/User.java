@@ -11,10 +11,10 @@ public class User  {
    @GeneratedValue
    private Long id;
 
-   @Column(name = "name")
+
    private String firstName;
 
-   @Column(name = "last_name")
+
    private String lastName;
 
    @Override
@@ -37,8 +37,14 @@ public class User  {
       this.lastName = lastName;
    }
 
-    public int getId() {
-      return Math.toIntExact(id);
+   public User(Long id, String firstName, String lastName) {
+      this.id = id;
+      this.firstName = firstName;
+      this.lastName = lastName;
+   }
+
+   public Long getId() {
+      return id;
    }
 
    public void setId(Long id) {

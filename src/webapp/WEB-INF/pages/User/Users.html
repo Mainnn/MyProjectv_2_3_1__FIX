@@ -9,23 +9,25 @@
 <div>
     <table>
         <tr>
+            <th>ID</th>
             <th>First name</th>
             <th>Last name</th>
             <th>#</th>
         </tr>
 
         <tr th:each="user : ${users}" >
-            <form th:action="@{/Update(firstName=${firstName},lastName=${lastName},id=${user.getId()})}" method="post">
-            <td><input type="text" th:value="${user.firstName}"  name="firstName"></td>
-            <td><input type="text" th:value="${user.lastName}"  name="lastName"></td>
-            <td><input type="submit" name="Udate" value="Update" ></form>
-                <form th:action="@{/Del(id=${user.getId()})}" method="post">
-                    <input type="submit" name="Del" value="Del" >
-                </form>
+            <form th:action="@{/update}"   method="post"  th:object="${updateUser}"    >
+                <td><input type="text"  th:value="${user.getId()}"  readonly name="id"></td>
+                <td><input type="text"  th:value="${user.firstName}"  name="firstName"></td>
+                <td><input type="text" th:value="${user.lastName}"    name="lastName"></td>
+                <td><input type="submit" name="Update" value="Update"   ></form>
+            <form th:action="@{/del(id=${user.getId()})}" method="post">
+                <input type="submit" name="Del" value="Del" >
+            </form>
             </td>
         </tr>
     </table>
-    <form th:action="@{/Add(firstName=${firstName},lastName=${lastName})}" method="post">
+    <form th:action="@{/add}" method="post" th:object="${updateUser}">
         <input type="text" value="//Your first name//"  name="firstName">
         <input type="text" value="//Your last name//"  name="lastName">
         <input type="submit" value="Add" name="AddUser">

@@ -27,12 +27,8 @@ public class UserDaoImp implements UserDao {
    }
 
    @Override
-   public void update(int id,String firstName,String lastName) {
-      User tempUser =findeUser(id);
-      System.out.println(firstName);
-      tempUser.setFirstName(firstName);
-      tempUser.setLastName(lastName);
-      entityManager.merge(tempUser);
+   public void update(User user) {
+      entityManager.merge(user);
       entityManager.flush();
    }
 
